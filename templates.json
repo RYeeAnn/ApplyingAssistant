@@ -1,0 +1,44 @@
+{
+  "templates": {
+    "career_goals_5_years": {
+      "title": "Where do you see yourself in 5 years?",
+      "default_text": "In five years, I see myself as a senior software engineer leading technical projects and mentoring junior developers. I aim to deepen my expertise in [relevant technologies] while contributing to meaningful products that solve real-world problems. I'm passionate about continuous learning and staying current with industry trends, and I hope to take on increasing responsibilities in system architecture and technical decision-making."
+    },
+    "why_this_company": {
+      "title": "Why do you want to work at this company?",
+      "default_text": "I'm excited about this opportunity because [company name] aligns perfectly with my values and career aspirations. Your commitment to [specific company value/mission] resonates with me, and I'm particularly drawn to [specific product/project/technology]. As someone early in my career, I believe this role would provide excellent growth opportunities while allowing me to contribute meaningfully to your team's success."
+    },
+    "why_software_engineering": {
+      "title": "Why did you choose software engineering?",
+      "default_text": "I chose software engineering because I love solving complex problems through code and seeing the immediate impact of my work. The field combines creativity with logical thinking, which appeals to my analytical nature. I'm passionate about building solutions that can scale and help people, whether it's improving user experiences or optimizing backend systems. The constant evolution of technology keeps me motivated to learn and grow."
+    },
+    "greatest_strength": {
+      "title": "What is your greatest strength?",
+      "default_text": "My greatest strength is my ability to learn quickly and adapt to new technologies. Throughout my journey in software development, I've consistently demonstrated the ability to pick up new frameworks, programming languages, and tools efficiently. I combine this with strong problem-solving skills and attention to detail, which helps me write clean, maintainable code and debug issues effectively."
+    },
+    "greatest_weakness": {
+      "title": "What is your greatest weakness?",
+      "default_text": "One area I've been working on is my tendency to spend too much time perfecting code before moving forward. While attention to detail is important, I've learned that sometimes 'good enough' is better than perfect, especially when working under tight deadlines. I've been practicing time-boxing my tasks and seeking feedback earlier in the development process to find the right balance between quality and efficiency."
+    },
+    "challenging_project": {
+      "title": "Tell me about a challenging project you worked on",
+      "default_text": "One of my most challenging projects was [project name/description]. The main challenge was [specific technical or collaborative challenge]. I approached this by [your solution/approach], which required me to [skills used]. Through this experience, I learned [key learnings] and was able to [positive outcome]. This project taught me the importance of [lesson learned] and strengthened my skills in [relevant technologies/skills]."
+    },
+    "team_collaboration": {
+      "title": "How do you work in a team environment?",
+      "default_text": "I thrive in collaborative environments and believe the best solutions come from diverse perspectives. I communicate regularly with team members through stand-ups, code reviews, and informal check-ins. I'm comfortable both taking initiative on tasks and supporting others when they need help. I value constructive feedback and always try to be respectful and considerate in my interactions, recognizing that everyone brings unique strengths to the team."
+    },
+    "handling_stress": {
+      "title": "How do you handle stress and pressure?",
+      "default_text": "I handle stress by staying organized and breaking down complex problems into manageable tasks. When facing tight deadlines, I prioritize effectively and communicate proactively with my team about progress and any potential blockers. I've found that taking short breaks to clear my mind and maintaining a healthy work-life balance helps me stay focused and productive under pressure."
+    },
+    "technical_interests": {
+      "title": "What technologies or areas of development interest you most?",
+      "default_text": "I'm particularly interested in [specific technology/area like full-stack development, cloud computing, etc.]. I enjoy working with [specific technologies you know] and I'm currently learning [technologies you're studying]. I'm drawn to [specific aspect like user experience, system design, data processing] because [reason]. I stay current by [how you keep learning - blogs, courses, projects, etc.]."
+    },
+    "salary_expectations": {
+      "title": "What are your salary expectations?",
+      "default_text": "I'm looking for a competitive salary that reflects the market rate for junior software engineers in this area. Based on my research, I understand the range is typically between $X and $Y. However, I'm more focused on finding the right opportunity for growth and learning. I'm open to discussing a comprehensive package that includes benefits, professional development opportunities, and potential for advancement."
+    }
+  }
+} 

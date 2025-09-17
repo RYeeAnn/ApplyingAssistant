@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applying Assistant Demo - Test the Extension</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .company-info {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        
+
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .large-textarea {
+            min-height: 200px;
+        }
+        
+        .instructions {
+            background: #ede9fe;
+            border: 1px solid #c4b5fd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h4 {
+            margin-top: 0;
+            color: #6366f1;
+        }
+        
+        .instructions ul {
+            margin-bottom: 0;
+        }
+        
+        .btn {
+            background: #6366f1;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: #5855eb;
+        }
+        
+        .demo-note {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏢 Company Job Application</h1>
+        <div class="company-info">
+            <p><strong>Position:</strong> Junior Software Engineer</p>
+            <p><strong>Department:</strong> Engineering Team</p>
+            <p><strong>Location:</strong> Vancouver, BC</p>
+        </div>
+
+        <div class="instructions">
+            <h4>🚀 Testing the Applying Assistant</h4>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="career-goals">Where do you see yourself in 5 years?</label>
+                <textarea id="career-goals" name="career-goals" placeholder="Describe your career aspirations and goals..." class="large-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="why-company">Why do you want to work at Company?</label>
+                <textarea id="why-company" name="why-company" placeholder="Tell us what attracts you to our company..." class="large-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="why-engineering">Why did you choose software engineering?</label>
+                <textarea id="why-engineering" name="why-engineering" placeholder="Share your passion for software development..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="strength">What is your greatest strength?</label>
+                <textarea id="strength" name="strength" placeholder="Describe your key strength with examples..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="weakness">What is an area you're working to improve?</label>
+                <textarea id="weakness" name="weakness" placeholder="Share a weakness and how you're addressing it..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="challenging-project">Tell us about a challenging project you worked on</label>
+                <textarea id="challenging-project" name="challenging-project" placeholder="Describe the project, challenges, and outcomes..." class="large-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="technical-interests">What technologies or areas of development interest you most?</label>
+                <textarea id="technical-interests" name="technical-interests" placeholder="Share your technical interests and learning goals..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="team-work">How do you work in a team environment?</label>
+                <textarea id="team-work" name="team-work" placeholder="Describe your collaboration style and team experiences..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="handle-stress">How do you handle stress and pressure?</label>
+                <textarea id="handle-stress" name="handle-stress" placeholder="Share your stress management strategies..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="salary-expectations">What are your salary expectations?</label>
+                <textarea id="salary-expectations" name="salary-expectations" placeholder="Share your compensation expectations..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="additional-info">Is there anything else you'd like us to know?</label>
+                <textarea id="additional-info" name="additional-info" placeholder="Any additional information you'd like to share..." class="large-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn" onclick="showFormData()">Preview Application</button>
+            </div>
+        </form>
+
+        <div class="demo-note">
+            <p><strong>Note:</strong> This is a demo page for testing the Applying Assistant extension. 
+            The extension should detect the text fields and provide relevant template suggestions. 
+            No data will actually be submitted from this form.</p>
+        </div>
+    </div>
+
+    <script>
+        function showFormData() {
+            const formData = new FormData(document.querySelector('form'));
+            let output = 'Form Data Preview:\n\n';
+            
+            for (let [key, value] of formData.entries()) {
+                if (value.trim()) {
+                    output += `${key.replace('-', ' ').toUpperCase()}:\n${value}\n\n`;
+                }
+            }
+            
+            if (output === 'Form Data Preview:\n\n') {
+                alert('Please fill out some fields first to see the preview!');
+            } else {
+                alert(output);
+            }
+        }
+
+        // Add some visual feedback for the demo
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, textarea');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.backgroundColor = '#f0f9ff';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.backgroundColor = '';
+                });
+            });
+        });
+
+        // Log when fields are detected (for debugging)
+        console.log('Demo page loaded. Applying Assistant should detect', 
+                   document.querySelectorAll('input, textarea').length, 'form fields.');
+    </script>
+</body>
+</html> 

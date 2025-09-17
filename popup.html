@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applying Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>🚀 Applying Assistant</h1>
+                <p>Speed up your applications</p>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="templates">Templates</button>
+            <button class="tab-button" data-tab="settings">Settings</button>
+        </div>
+
+        <div class="tab-content" id="templates-tab">
+            <div class="field-status" id="field-status">
+                <div class="status-indicator">
+                    <span class="status-icon">🎯</span>
+                    <span class="status-text">Click a text field</span>
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="template-search" placeholder="Search templates..." class="search-input">
+            </div>
+            
+
+
+            <div class="template-list" id="template-list">
+                <!-- Templates will be populated by JavaScript -->
+            </div>
+
+            <div class="actions">
+                <button id="add-template" class="btn btn-primary">+ Add Custom Template</button>
+                <button id="close-extension" class="btn btn-secondary">Close Extension</button>
+            </div>
+        </div>
+
+        <div class="tab-content hidden" id="settings-tab">
+            <div class="settings-section">
+                <h3>General Settings</h3>
+                
+                <div class="setting-item">
+                    <label for="auto-detect">
+                        <input type="checkbox" id="auto-detect" checked>
+                        Auto-detect form fields
+                    </label>
+                    <p class="setting-description">Automatically highlight text areas and input fields on application forms</p>
+                </div>
+
+                <div class="setting-item">
+                    <label for="show-suggestions">
+                        <input type="checkbox" id="show-suggestions" checked>
+                        Show template suggestions
+                    </label>
+                    <p class="setting-description">Display relevant template suggestions based on field labels</p>
+                </div>
+
+                <div class="setting-item">
+                    <label for="keyboard-shortcuts">
+                        <input type="checkbox" id="keyboard-shortcuts" checked>
+                        Enable keyboard shortcuts
+                    </label>
+                    <p class="setting-description">Use Ctrl+Shift+T to toggle template suggestions</p>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>Data Management</h3>
+                <div class="actions">
+                    <button id="export-templates" class="btn btn-secondary">Export Templates</button>
+                    <button id="import-templates" class="btn btn-secondary">Import Templates</button>
+                    <button id="reset-templates" class="btn btn-danger">Reset to Defaults</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="status" id="status-message"></div>
+        </footer>
+    </div>
+
+    <!-- Template Creation Modal -->
+    <div id="template-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Custom Template</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="template-title">Template Title</label>
+                    <input type="text" id="template-title" placeholder="e.g., Why this company?">
+                </div>
+
+                <div class="form-group">
+                    <label for="template-text">Template Text</label>
+                    <textarea id="template-text" rows="6" placeholder="Enter your template text here..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-template" class="btn btn-primary">Save Template</button>
+                <button id="cancel-template" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

@@ -1,0 +1,344 @@
+/* Job Application Assistant - Content Script Styles */
+
+/* Field Indicator Styles */
+.applying-assistant-indicator {
+    position: absolute !important;
+    top: -8px !important;
+    right: -8px !important;
+    width: 20px !important;
+    height: 20px !important;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    z-index: 10000 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    opacity: 0.8 !important;
+    transition: all 0.2s ease !important;
+    border: 2px solid white !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    line-height: 1 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.applying-assistant-indicator:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.applying-assistant-indicator:active {
+    transform: scale(0.95) !important;
+}
+
+/* Enhanced field highlighting when focused */
+input:focus[data-applying-assistant-attached],
+textarea:focus[data-applying-assistant-attached],
+[contenteditable="true"]:focus[data-applying-assistant-attached] {
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+    outline: none !important;
+}
+
+/* Suggestion Panel Styles - Enhanced for better visibility */
+.applying-assistant-suggestions {
+    position: fixed !important;
+    width: 350px !important;
+    max-height: 400px !important;
+    background: white !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(99, 102, 241, 0.1) !important;
+    z-index: 2147483647 !important; /* Maximum z-index for visibility */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+    font-size: 14px !important;
+    overflow: hidden !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    line-height: 1.5 !important;
+    color: #334155 !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    text-shadow: none !important;
+}
+
+.applying-assistant-suggestions * {
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+}
+
+.applying-assistant-suggestions .suggestions-header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    color: white !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 0 !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.applying-assistant-suggestions h4 {
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: white !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    text-shadow: none !important;
+    line-height: 1.2 !important;
+}
+
+.applying-assistant-suggestions .close-btn {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+    color: white !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    padding: 4px 8px !important;
+    line-height: 1 !important;
+    border-radius: 4px !important;
+    transition: background-color 0.2s ease !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    font-family: inherit !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+
+.applying-assistant-suggestions .close-btn:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.applying-assistant-suggestions .suggestions-content {
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    padding: 8px !important;
+    margin: 0 !important;
+}
+
+.applying-assistant-suggestions .template-suggestion {
+    padding: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    background: #f8fafc !important;
+    position: relative !important;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    color: inherit !important;
+    line-height: 1.4 !important;
+}
+
+.applying-assistant-suggestions .template-suggestion:hover,
+.applying-assistant-suggestions .template-suggestion:focus {
+    background: #f1f5f9 !important;
+    border-color: #6366f1 !important;
+    outline: none !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.applying-assistant-suggestions .template-suggestion:last-child {
+    margin-bottom: 0 !important;
+}
+
+.applying-assistant-suggestions .template-title {
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    margin-bottom: 4px !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    text-shadow: none !important;
+}
+
+
+
+.applying-assistant-suggestions .template-preview {
+    font-size: 13px !important;
+    color: #64748b !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    text-shadow: none !important;
+}
+
+.applying-assistant-suggestions .no-templates {
+    text-align: center !important;
+    color: #64748b !important;
+    padding: 20px !important;
+    font-style: italic !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    text-shadow: none !important;
+}
+
+/* Scrollbar styling for suggestions */
+.applying-assistant-suggestions .suggestions-content::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.applying-assistant-suggestions .suggestions-content::-webkit-scrollbar-track {
+    background: #f1f5f9 !important;
+    border-radius: 3px !important;
+}
+
+.applying-assistant-suggestions .suggestions-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1 !important;
+    border-radius: 3px !important;
+}
+
+.applying-assistant-suggestions .suggestions-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8 !important;
+}
+
+/* Animation for suggestions panel */
+@keyframes jobAssistantFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.applying-assistant-suggestions {
+    animation: jobAssistantFadeIn 0.2s ease-out !important;
+}
+
+/* Animation for template items */
+@keyframes jobAssistantSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.applying-assistant-suggestions .template-suggestion {
+    animation: jobAssistantSlideIn 0.3s ease-out !important;
+}
+
+.applying-assistant-suggestions .template-suggestion:nth-child(1) { animation-delay: 0s !important; }
+.applying-assistant-suggestions .template-suggestion:nth-child(2) { animation-delay: 0.05s !important; }
+.applying-assistant-suggestions .template-suggestion:nth-child(3) { animation-delay: 0.1s !important; }
+.applying-assistant-suggestions .template-suggestion:nth-child(4) { animation-delay: 0.15s !important; }
+.applying-assistant-suggestions .template-suggestion:nth-child(5) { animation-delay: 0.2s !important; }
+
+/* Overlay for modal-like effect */
+.applying-assistant-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    z-index: 2147483646 !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+    .applying-assistant-suggestions {
+        width: calc(100vw - 20px) !important;
+        left: 10px !important;
+        right: 10px !important;
+        max-width: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .applying-assistant-indicator {
+        border: 3px solid white !important;
+        background: #000080 !important;
+    }
+    
+    .applying-assistant-suggestions {
+        border: 2px solid #000000 !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .applying-assistant-indicator,
+    .applying-assistant-suggestions,
+    .applying-assistant-suggestions .template-suggestion {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dark mode support (basic) */
+@media (prefers-color-scheme: dark) {
+    .applying-assistant-suggestions {
+        background: #1e293b !important;
+        border-color: #374151 !important;
+        color: #f1f5f9 !important;
+    }
+    
+    .applying-assistant-suggestions .template-suggestion {
+        background: #334155 !important;
+        border-color: #475569 !important;
+    }
+    
+    .applying-assistant-suggestions .template-suggestion:hover,
+    .applying-assistant-suggestions .template-suggestion:focus {
+        background: #475569 !important;
+        border-color: #6366f1 !important;
+    }
+    
+    .applying-assistant-suggestions .template-title {
+        color: #f1f5f9 !important;
+    }
+    
+    .applying-assistant-suggestions .template-preview {
+        color: #cbd5e1 !important;
+    }
+    
+    .applying-assistant-suggestions .no-templates {
+        color: #94a3b8 !important;
+    }
+} 
