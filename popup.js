@@ -239,7 +239,7 @@ async function useTemplate(templateKey) {
 
         console.log('Using template:', template.title);
 
-        // Get active tab
+        // Get active tab (using activeTab permission)
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         console.log('Active tab:', tab.id);
         

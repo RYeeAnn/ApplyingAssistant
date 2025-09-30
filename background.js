@@ -8,13 +8,8 @@ chrome.runtime.onInstalled.addListener(async (details) => {
         // First time installation
         await initializeExtension();
         
-        // Open welcome page or show notification
-        chrome.tabs.create({
-            url: chrome.runtime.getURL('welcome.html')
-        }).catch(() => {
-            // Fallback if welcome page doesn't exist
-            console.log('Welcome! Job Application Assistant is ready to help speed up your job applications.');
-        });
+        // Welcome message (removed tab creation to minimize permissions)
+        console.log('Welcome! Job Application Assistant is ready to help speed up your job applications.');
         
     } else if (details.reason === 'update') {
         // Extension updated
@@ -36,11 +31,13 @@ async function initializeExtension() {
             enabled: true
         };
         
-        await chrome.storage.local.set({ 
-            settings: defaultSettings,
-            installDate: new Date().toISOString(),
-            version: chrome.runtime.getManifest().version
-        });
+        if (chrome.storage && chrome.storage.local) {
+            await chrome.storage.local.set({ 
+                settings: defaultSettings,
+                installDate: new Date().toISOString(),
+                version: chrome.runtime.getManifest().version
+            });
+        }
         
         console.log('Extension initialized with default settings');
         
@@ -52,6 +49,7 @@ async function initializeExtension() {
 // Migrate settings between versions
 async function migrateSettings() {
     try {
+        if (!chrome.storage || !chrome.storage.local) return;
         const result = await chrome.storage.local.get(['settings', 'version']);
         const currentVersion = chrome.runtime.getManifest().version;
         const savedVersion = result.version;
@@ -92,7 +90,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             break;
             
         case 'openOptionsPage':
-            chrome.runtime.openOptionsPage();
+            if (chrome.runtime && chrome.runtime.openOptionsPage) {
+                chrome.runtime.openOptionsPage();
+            }
             sendResponse({ success: true });
             break;
             
@@ -116,6 +116,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // Track template usage (privacy-friendly analytics)
 async function trackTemplateUsage(templateKey) {
     try {
+        if (!chrome.storage || !chrome.storage.local) return;
         const result = await chrome.storage.local.get(['usage']);
         const usage = result.usage || {};
         
@@ -146,90 +147,19 @@ async function trackTemplateUsage(templateKey) {
     }
 }
 
-// Handle browser action click (if popup is disabled)
-chrome.action.onClicked.addListener(async (tab) => {
-    try {
-        // Check if content script is already injected
-        await chrome.tabs.sendMessage(tab.id, { action: 'ping' });
-    } catch (error) {
-        // Content script not injected, inject it
-        try {
-            await chrome.scripting.executeScript({
-                target: { tabId: tab.id },
-                files: ['content.js']
-            });
-            
-            await chrome.scripting.insertCSS({
-                target: { tabId: tab.id },
-                files: ['styles.css']
-            });
-            
-            console.log('Content script injected into tab', tab.id);
-            
-        } catch (injectionError) {
-            console.error('Error injecting content script:', injectionError);
-        }
-    }
-});
+// Note: Manual injection removed - extension uses popup interface
+// Content scripts auto-inject via manifest declaration
 
-// Handle tab updates to re-inject content script if needed
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-    // Only act when the page has finished loading
-    if (changeInfo.status !== 'complete') return;
-    
-    // Skip non-http(s) URLs
-    if (!tab.url || (!tab.url.startsWith('http://') && !tab.url.startsWith('https://'))) {
-        return;
-    }
-    
-    try {
-        // Check if our content script is already running
-        await chrome.tabs.sendMessage(tabId, { action: 'ping' });
-    } catch (error) {
-        // Content script not running, check if we should inject it
-        const result = await chrome.storage.local.get(['settings']);
-        const settings = result.settings || { enabled: true };
-        
-        if (settings.enabled) {
-            try {
-                await chrome.scripting.executeScript({
-                    target: { tabId: tabId },
-                    files: ['content.js']
-                });
-                
-                await chrome.scripting.insertCSS({
-                    target: { tabId: tabId },
-                    files: ['styles.css']
-                });
-                
-                console.log('Content script auto-injected into tab', tabId);
-                
-            } catch (injectionError) {
-                // Fail silently for pages where injection is not allowed
-                console.debug('Could not inject into tab', tabId, injectionError.message);
-            }
-        }
-    }
-});
+// Note: Auto-injection removed to minimize permissions  
+// Content scripts are declared in manifest and will auto-inject
 
-// Clean up old data periodically
-chrome.alarms.onAlarm.addListener(async (alarm) => {
-    if (alarm.name === 'cleanup') {
-        await cleanupOldData();
-    }
-});
-
-// Set up periodic cleanup alarm
-chrome.runtime.onStartup.addListener(() => {
-    chrome.alarms.create('cleanup', { 
-        delayInMinutes: 60, // 1 hour after startup
-        periodInMinutes: 24 * 60 // Once per day
-    });
-});
+// Note: Periodic cleanup removed to minimize permissions
+// Data will be cleaned up manually during template usage
 
 // Clean up old data
 async function cleanupOldData() {
     try {
+        if (!chrome.storage || !chrome.storage.local) return;
         const result = await chrome.storage.local.get(['usage']);
         const usage = result.usage || {};
         
@@ -272,31 +202,8 @@ chrome.runtime.onSuspendCanceled.addListener(() => {
     console.log('Extension suspend canceled');
 });
 
-// Context menu setup (optional)
-chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
-        id: 'applying-assistant-insert',
-        title: 'Job Assistant: Insert Template',
-        contexts: ['editable'],
-        documentUrlPatterns: ['http://*/*', 'https://*/*']
-    });
-});
-
-// Handle context menu clicks
-chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-    if (info.menuItemId === 'applying-assistant-insert') {
-        try {
-            // Send message to content script to show suggestions
-            await chrome.tabs.sendMessage(tab.id, {
-                action: 'showSuggestions',
-                x: info.x || 0,
-                y: info.y || 0
-            });
-        } catch (error) {
-            console.error('Error showing suggestions from context menu:', error);
-        }
-    }
-});
+// Note: Context menu functionality removed to minimize permissions
+// Users can access templates through the extension popup
 
 // Export functions for testing (if needed)
 if (typeof module !== 'undefined' && module.exports) {

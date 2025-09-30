@@ -4,13 +4,8 @@
   "version": "1.0.0",
   "description": "Speed up your job applications with pre-written templates for common questions. The smart assistant for job seekers.",
   "permissions": [
-    "activeTab",
     "storage",
-    "scripting"
-  ],
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
+    "activeTab"
   ],
   "content_scripts": [
     {
